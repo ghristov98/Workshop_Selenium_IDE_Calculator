@@ -5,25 +5,25 @@ on:
         branches:
         - main
 
-        jobs:
-            build:
-            runs-on: ubuntu-latest
+jobs:
+    build:
+        runs-on: ubuntu-latest
 
-            steps:
-                - name: Checkout repository
-                uses: actions/checkout@v2
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
 
-                -name: Set up .Net Core
-                uses: actions/setup-dotnet@v3
-                with:
-                    dotnet-version: '8.0.x'
+            - name: Set up .Net Core
+              uses: actions/setup-dotnet@v3
+              with:
+                dotnet-version: '8.0.x'
 
-                - name: Install dependencies
-                run: dotnet restore
+            - name: Install dependencies
+              run: dotnet restore
 
-                name: Build project
-                run: dotnet build --no-restore 
+            - name: Build project
+              run: dotnet build --no-restore 
 
-                name: Run tests
-                run: dotnet test --verbosity normal
+            - name: Run tests
+              run: dotnet test --verbosity normal
                 
